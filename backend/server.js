@@ -1,14 +1,23 @@
-require("dotenv").config();
 const express = require("express");
-const connectDB = require("./config/db");
-const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const showRoutes = require("./routes/showRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
+dotenv.config();
 const app = express();
-app.use(express.json()); // Parse JSON requests
-app.use(cors()); // Enable CORS for frontend requests
+app.use(express.json());
 
-connectDB(); // Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err));
 
-app.use("/api/auth", require("./routes/authRoutes")); // Use authentication routes
+// Routes
+app.use("/api/shows", showRoutes);           // Public
+app.use("/api/admin", adminRoutes);          // Admin-only
 
-app.listen(4000, () => console.log("Server running on port 4000"));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
