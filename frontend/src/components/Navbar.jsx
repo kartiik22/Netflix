@@ -15,7 +15,8 @@ const Navbar = () => {
           <Link to="/signup">Signup</Link>
         </>
       ) : (
-        <button onClick={() => dispatch(logout())} style={{ marginLeft: "10px" }}>Logout</button>
+        <button onClick={() => dispatch(logout())} 
+        style={{ marginLeft: "10px" }}>Logout</button>
       )}
     </nav>
   );

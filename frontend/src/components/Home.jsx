@@ -27,7 +27,16 @@ const Home = () => {
           </div>
         </div>
   
-        
+        <div className="content">
+          <h2>Popular Movies</h2>
+          <div className="movie-grid">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="movie-card">
+                <img src={`/placeholder.svg?height=300&width=200`} alt={`Movie ${i}`} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     )
   };
