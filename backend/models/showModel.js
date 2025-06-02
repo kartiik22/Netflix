@@ -5,6 +5,11 @@ const showSchema = new mongoose.Schema({
   image: { type: String, required: true },
   rating: { type: Number, required: true },
   description: { type: String, required: true },
+  url: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Url',
+    required: true,
+  },
 });
 
 const Show = mongoose.model("Show", showSchema);
