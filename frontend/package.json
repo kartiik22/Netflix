@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.8.1",
     "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
@@ -19,11 +20,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd ../backend && npm start",
-  "client": "react-scripts start"
-}
-,
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd ../backend && npm start",
+    "client": "react-scripts start"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
